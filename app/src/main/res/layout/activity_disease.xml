@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="utcc.cken.tae.som.healthrecord.DiseaseActivity"
+    android:background="@drawable/wall">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_disease"
+            android:id="@+id/textView11"
+            android:onClick="clickHeart"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/heartdisease"
+            android:id="@+id/button5"
+            android:onClick="clickHeart"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:background="#96355d85"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lowpressure"
+            android:id="@+id/button6"
+            android:onClick="clickLowpressure"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:background="#967fbe6a"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/highpressure"
+            android:id="@+id/button7"
+            android:onClick="clickhighpressure"
+            android:textColor="#ffffff"
+            android:background="#96355d85"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/diabetse"
+            android:id="@+id/button8"
+            android:onClick="clickdiabetes"
+            android:textColor="#ffffff"
+            android:elegantTextHeight="false"
+            android:background="#967fbe6a"
+            android:layout_margin="10dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

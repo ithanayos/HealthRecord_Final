@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context="utcc.cken.tae.som.healthrecord.highpressureActivity"
+    android:background="@drawable/wall">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:background="#82ffffff"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="true" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/highpressure"
+            android:id="@+id/textView23"
+            android:textSize="@dimen/h1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heigh_dimen" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/systolic"
+                android:id="@+id/textView24"
+                android:textSize="@dimen/h2"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp" />
+
+            <EditText
+                android:layout_width="@dimen/edit_text_short"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText10"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/heigh_dimen" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/diastolic"
+                android:id="@+id/textView25"
+                android:textSize="@dimen/h2"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp" />
+
+            <EditText
+                android:layout_width="@dimen/edit_text_short"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText11"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="@dimen/edit_text"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exercise"
+                android:id="@+id/textView26"
+                android:textSize="@dimen/h2"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="@dimen/heigh_dimen"
+                android:id="@+id/spinner11"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="@dimen/edit_text"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/food"
+                android:id="@+id/textView27"
+                android:textSize="@dimen/h2"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="@dimen/heigh_dimen"
+                android:id="@+id/spinner12"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="@dimen/edit_text"
+            android:layout_height="wrap_content"
+            android:text="@string/alcohol"
+            android:id="@+id/textView29"
+            android:textSize="@dimen/h2"
+            android:layout_gravity="center_horizontal" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/never"
+                android:id="@+id/radioButton6"
+                android:checked="true"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sometime"
+                android:id="@+id/radioButton7"
+                android:layout_weight="1"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/often"
+                android:id="@+id/radioButton8"
+                android:layout_weight="1"
+                android:checked="false" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:id="@+id/button14"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="utcc.cken.tae.som.healthrecord.diabetesActivity">
+
+    <RelativeLayout
+        tools:context="utcc.cken.tae.som.healthrecord.HeartActivity"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/wall" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#82ffffff"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="100dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/diabetse"
+                android:id="@+id/textView28"
+                android:textSize="@dimen/h1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/heigh_dimen"
+                android:layout_marginLeft="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sugar"
+                    android:id="@+id/textView30"
+                    android:textSize="@dimen/h2"
+                    android:layout_marginTop="20dp" />
+
+                <EditText
+                    android:layout_width="@dimen/edit_text_short"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText14"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="@dimen/edit_text"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/exercise"
+                    android:id="@+id/textView31"
+                    android:textSize="@dimen/h2"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/heigh_dimen"
+                    android:id="@+id/spinner13"
+                    android:layout_weight="5.01" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="@dimen/edit_text"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/food"
+                    android:id="@+id/textView32"
+                    android:textSize="@dimen/h2"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/heigh_dimen"
+                    android:id="@+id/spinner14"
+                    android:layout_weight="2" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:id="@+id/button15"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="false" />
+    </RelativeLayout>
+</RelativeLayout>

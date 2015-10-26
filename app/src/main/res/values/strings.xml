@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Health Record</string>
+
+    <string name="title">Health Record</string>
+    <string name="User">User :</string>
+    <string name="Pass">Password :</string>
+    <string name="Sign_up">Sign up</string>
+    <string name="Sign_in">Sign in</string>
+    <string name="User_regis">User</string>
+    <string name="Pass_regis">Password</string>
+
+    <string name="title_signup">สมัคสมาชิก</string>
+    <string name="name">ชื่อ นามสกุล</string>
+    <string name="email">eMail</string>
+    <string name="sex">เพศ</string>
+    <string name="male">ชาย</string>
+    <string name="female">หญิง</string>
+    <string name="age">ช่วงอายุ</string>
+    <string name="weight">น้ำหนัก (กิโลกรัม)</string>
+    <string name="height">ส่วนสูง (เซนติเมตร)</string>
+    <string name="save">บันทึกข้อมูล</string>
+    <string name="aboutme">เกี่ยวกับฉัน</string>
+    <string name="title_rec">บันทึกพฤติกรรม</string>
+
+    <string name="title_record">บันทึกพฤติกรรมประจำวัน</string>
+    <string name="sleep">การนอน</string>
+    <string name="food">อาหาร</string>
+    <string name="exercise">ออกกำลังกาย</string>
+    <string name="drink">การดื่มน้า</string>
+    <string name="monitor">เวลาอยู่หน้าจอคอม</string>
+
+    <string name="title_disease">บันทึกพฤติกรรมประจำวัน (เฉพาะโรค)</string>
+    <string name="diabetse">โรคเบาหวาน</string>
+    <string name="lowpressure">โรคความดันต่ำ</string>
+    <string name="highpressure">โรคความดันสูง</string>
+    <string name="heartdisease">โรคหัวใจ</string>
+
+    <string name="sugar">ค่าน้ำตาล</string>
+    <string name="systolic">systolic</string>
+    <string name="diastolic">diastolic</string>
+    <string name="alcohol">แอลกอฮอล์,บุหรี่</string>
+    <string name="stress">ความเครียด</string>
+
+
+    <string name="never">ไม่เลย</string>
+    <string name="sometime">น้อย</string>
+    <string name="often">มาก</string>
+
+
+    <string name="check">เช็คสุขภาพ</string>
+    <string name="pressure">เช็คความดัน</string>
+    <string name="heartbeat">อัตราการเต้นหัวใจ</string>
+    <string name="bmi">BMI</string>
+    <string name="glucose">ค่าน้ำตาลในเลือด</string>
+    <string name="submit">ยืนยัน</string>
+    <string name="back">กลับ</string>
+    <string name="edit">แก้ไข</string>
+
+</resources>
