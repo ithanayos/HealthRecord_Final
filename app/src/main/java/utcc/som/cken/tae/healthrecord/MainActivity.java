@@ -27,15 +27,19 @@ public class MainActivity extends AppCompatActivity {
 
     //Explicit
     private UserTABLE objUserTABLE;
-    private String TAG ="Health";
+    private String TAG ="Health", userString, passwordString;
+
+    private MyDialog objMyDialog = new MyDialog();
 
     private EditText userEditText, passwordEditText;
-    private String userString, passwordString;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         //Create & Connected Database
         createDatabase();
@@ -54,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
     } //OnCreate
 
+
+
     //Active When Restart
-    
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -159,8 +164,8 @@ public class MainActivity extends AppCompatActivity {
         if (strUser.equals("") || strPassword.equals("") ) {
 
             //Have Space
-            MyDialog objMyDialog = new MyDialog();
-            objMyDialog.errorDialog(MainActivity.this, "มีช่องว่าง", "กรุณากรอกให้ครบ");
+
+            objMyDialog.errorDialog(MainActivity.this, "Have Space", "Please Fill All Every Blank");
         } else {
 
             //No Space
@@ -174,20 +179,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkUserPassword(String strUser, String strPassword) {
         try {
-            String[] strMyResult = objUserTABLE.searchUserPassword(strUser);
+            String[] strMyResult = objUserTABLE.searchUser(strUser);
             if (strPassword.equals(strMyResult[2])) {
                 //Password True
-                wecomeDialog(strMyResult[3]);
+                Intent objIntent = new Intent(MainActivity.this, MyServiceActivity.class);
+                objIntent.putExtra("Name", strMyResult[3]);
+                startActivity(objIntent);
+                finish();
+                //wecomeDialog(strMyResult[3]);
             } else {
                 //Password False
-                MyDialog objMyDialog = new MyDialog();
+
                 objMyDialog.errorDialog(MainActivity.this,"Password False", "Please Try Again Password False");
 
             }
 
         } catch (Exception e) {
             MyDialog objMyDialog = new MyDialog();
-            objMyDialog.errorDialog(MainActivity.this, "User False", "ไม่มี" + strUser + "ใน ฐานข้อมูลของเรา");
+            objMyDialog.errorDialog(MainActivity.this, "User False", "ไม่มี " + strUser + " ใน ฐานข้อมูลของเรา");
 
         }
 
