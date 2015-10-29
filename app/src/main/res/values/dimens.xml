@@ -17,5 +17,7 @@
     <dimen name="heigh_dimen">80dp</dimen>
     <dimen name="heigh_dimen_short">20dp</dimen>
 
+    <dimen name="margin">20dp</dimen>
+
 
 </resources>
