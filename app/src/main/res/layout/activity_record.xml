@@ -99,7 +99,8 @@
                             android:id="@+id/editText"
                             android:layout_weight="2"
                             android:lines="3"
-                            android:gravity="top" />
+                            android:gravity="top"
+                            android:inputType="text" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -122,7 +123,8 @@
                             android:id="@+id/editText2"
                             android:layout_weight="2"
                             android:lines="3"
-                            android:gravity="top" />
+                            android:gravity="top"
+                            android:inputType="text" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -145,7 +147,8 @@
                             android:id="@+id/editText3"
                             android:layout_weight="2"
                             android:lines="3"
-                            android:gravity="top" />
+                            android:gravity="top"
+                            android:inputType="text" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -259,6 +262,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="clickSaveRecord"
         android:text="@string/save"
         android:id="@+id/button4"
         android:layout_alignParentBottom="true" />
