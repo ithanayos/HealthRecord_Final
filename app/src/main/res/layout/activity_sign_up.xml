@@ -28,28 +28,32 @@
             android:layout_height="wrap_content"
             android:id="@+id/edtUserSign"
             android:layout_gravity="center_horizontal"
-            android:hint="@string/User" />
+            android:hint="@string/User"
+            android:inputType="text" />
 
         <EditText
             android:layout_width="@dimen/edit_text"
             android:layout_height="wrap_content"
             android:id="@+id/edtPassSign"
             android:layout_gravity="center_horizontal"
-            android:hint="@string/Pass" />
+            android:hint="@string/Pass"
+            android:inputType="text" />
 
         <EditText
             android:layout_width="@dimen/edit_text"
             android:layout_height="wrap_content"
             android:id="@+id/edtNameSign"
             android:layout_gravity="center_horizontal"
-            android:hint="@string/name" />
+            android:hint="@string/name"
+            android:inputType="text" />
 
         <EditText
             android:layout_width="@dimen/edit_text"
             android:layout_height="wrap_content"
             android:id="@+id/edtEmailSign"
             android:layout_gravity="center_horizontal"
-            android:hint="@string/email" />
+            android:hint="@string/email"
+            android:inputType="text" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -110,14 +114,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/edtWeight"
             android:layout_gravity="center_horizontal"
-            android:hint="@string/weight" />
+            android:hint="@string/weight"
+            android:inputType="numberDecimal" />
 
         <EditText
             android:layout_width="@dimen/edit_text"
             android:layout_height="wrap_content"
             android:id="@+id/edtHeight"
             android:layout_gravity="center_horizontal"
-            android:hint="@string/height" />
+            android:hint="@string/height"
+            android:inputType="numberDecimal" />
     </LinearLayout>
 
     <Button

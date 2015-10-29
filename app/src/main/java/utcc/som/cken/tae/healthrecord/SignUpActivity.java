@@ -1,13 +1,26 @@
 package utcc.som.cken.tae.healthrecord;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -18,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
     private Spinner ageSpinner;
 
     private String userString, passwordString, nameString,
-            emailString, weightString, heightString, sexString, ageString;
+            emailString, weightString, heightString, sexString = "Mail", ageString;
 
     private UserTABLE objUserTABLE;
     private MyDialog objMyDialog;
@@ -156,9 +169,73 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void confirmvalue() {
 
+        AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
+        objBuilder.setIcon(R.drawable.icon_question);
+        objBuilder.setTitle("Confirm Value");
+        objBuilder.setMessage("User = " + userString
+                + "\n" + "Password = " + passwordString
+                + "\n" + "Name = " + nameString
+                + "\n" + "eMail = " + emailString
+                + "\n" + "Sex = " + sexString
+                + "\n" + "Age = " + ageString
+                + "\n" + "Weight = " + weightString
+                + "\n" + "Height = " + heightString);
+        objBuilder.setCancelable(false); // Undo ไม่ได้
+        objBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
 
+            }
+        });
+        objBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Update to MySQL
+                updateToMySQL();
+                dialogInterface.dismiss();
+            }
+        });
+        objBuilder.show();
 
     }
+
+    private void updateToMySQL() {
+
+        //Setup policy
+        StrictMode.ThreadPolicy myPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(myPolicy);
+
+
+        //Update Value
+        try {
+
+            ArrayList<NameValuePair> objNameValuePairs = new ArrayList<NameValuePair>();
+            objNameValuePairs.add(new BasicNameValuePair("isAdd", "true"));
+            objNameValuePairs.add(new BasicNameValuePair("User", userString));
+            objNameValuePairs.add(new BasicNameValuePair("Password", passwordString));
+            objNameValuePairs.add(new BasicNameValuePair("Name", nameString));
+            objNameValuePairs.add(new BasicNameValuePair("Age", ageString));
+            objNameValuePairs.add(new BasicNameValuePair("Sex", sexString));
+            objNameValuePairs.add(new BasicNameValuePair("Weight", weightString));
+            objNameValuePairs.add(new BasicNameValuePair("Height", heightString));
+            objNameValuePairs.add(new BasicNameValuePair("Email", emailString));
+
+            HttpClient objHttpClient = new DefaultHttpClient();
+            HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/tae/add_data_user_tae.php");
+            objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
+            objHttpClient.execute(objHttpPost);
+
+            Toast.makeText(SignUpActivity.this, "Update New Value Successful", Toast.LENGTH_LONG);
+
+        } catch (Exception e) {
+            Toast.makeText(SignUpActivity.this, "Cannot Update To MySQL", Toast.LENGTH_LONG).show();
+
+        }
+
+
+
+    } // UpdateToMySQL
 
 
 } //Main Class
