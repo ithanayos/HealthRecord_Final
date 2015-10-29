@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Explicit
     private UserTABLE objUserTABLE;
+    private String TAG ="Health";
 
     private EditText userEditText, passwordEditText;
     private String userString, passwordString;
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (Exception e) { // ถ้า Error จะเข้ามาในนี้
 
-                Log.d("Rest", "InputStream ==>" + e.toString());
+                Log.d(TAG, "InputStream ==>" + e.toString());
 
             }
 
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                Log.d("Rest", "strJSON ==> "+e.toString());
+                Log.d(TAG, "strJSON ==> "+e.toString());
 
             }
 
@@ -168,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (Exception e) {
 
-                Log.d("Rest", "Update Error ==> "+e.toString());
+                Log.d(TAG, "Update SQLite ==> "+e.toString());
 
             }
 
