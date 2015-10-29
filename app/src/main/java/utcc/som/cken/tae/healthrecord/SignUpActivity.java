@@ -3,6 +3,8 @@ package utcc.som.cken.tae.healthrecord;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -18,21 +20,74 @@ public class SignUpActivity extends AppCompatActivity {
     private String userString, passwordString, nameString,
             emailString, weightString, heightString, sexString, ageString;
 
+    private UserTABLE objUserTABLE;
+    private MyDialog objMyDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        objUserTABLE = new UserTABLE(this);
+        objMyDialog = new MyDialog();
+
         // Bind Widget
 
         bindWidget();
 
-        //createSpinner();
+        //Create Spinner
+        createSpinner();
+
+        //Create Radio Group
+        createRadioGroup();
 
     } // OnCreate
 
+    private void createRadioGroup() {
+        sexRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.radMale:
+                        sexString = "Male";
+                        break;
+                    case R.id.radFemale:
+                        sexString = "Female";
+                        break;
+                    default:
+                        sexString = "Male";
+                        break;
+                }
+
+            }
+        });
+
+    }
+
     private void createSpinner() {
+
+        final String[] strAge = {"0 - 5", "5 - 10", "10 - 15", "15 - 20",
+                "20 - 25", "25 - 30", "30 - 35", "35 - 40",
+                "40 - 45", "45 - 50", "50 - 55", "55 - 60" ,
+                "60 - 65" , "65 - 70" , "70 - 75" ,"75 - 80"};
+        ArrayAdapter<String> ageAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strAge);
+        ageSpinner.setAdapter(ageAdapter);
+
+        ageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ageString = strAge[i];
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                ageString = strAge[0];
+
+            }
+        });
+
 
     } // createSpinner
 
@@ -42,9 +97,10 @@ public class SignUpActivity extends AppCompatActivity {
         passwordEditText = (EditText)findViewById(R.id.edtPassSign);
         nameEditText = (EditText) findViewById(R.id.edtNameSign);
         emailEditText = (EditText) findViewById(R.id.edtEmailSign);
-        //ageSpinner = (Spinner) findViewById(R.id.spnAge);
         weightEditText = (EditText) findViewById(R.id.edtWeight);
         heightEditText = (EditText) findViewById(R.id.edtHeight);
+        ageSpinner = (Spinner) findViewById(R.id.spnAge);
+        sexRadioGroup = (RadioGroup) findViewById(R.id.ragSex);
 
 
     }
@@ -68,7 +124,10 @@ public class SignUpActivity extends AppCompatActivity {
 
         } else {
 
-            //No Space
+            //Check User
+            checkUser();
+
+
         }
 
 
@@ -77,6 +136,29 @@ public class SignUpActivity extends AppCompatActivity {
 
     } // clickSave
 
+    private void checkUser() {
+
+        try {
+
+            String[] strResult = objUserTABLE.searchUser(userString);
+            //ค้นหาเจอ
+            objMyDialog.errorDialog(SignUpActivity.this, "เปลี่ยน User", "ฐานข้อมูลมี User" + strResult[1] + "นี้อยู่แล้ว");
+
+        } catch (Exception e) {
+
+            //Confirm Value
+            confirmvalue();
+
+        }
+
+
+    }
+
+    private void confirmvalue() {
+
+
+
+    }
 
 
 } //Main Class

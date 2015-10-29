@@ -43,19 +43,21 @@ public class MainActivity extends AppCompatActivity {
         //Test Add Value SQLite
         //testAddValue();
 
+        deleteAllData();
+
         //Synchronize JSON to SQLite
         synJSONtoSQLite();
 
         bindWidget();
 
-        //deleteAllData();
+
 
     } //OnCreate
 
     private void deleteAllData() {
 
         SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase
-                ("Health.db", MODE_APPEND, null);
+                ("Health.db", MODE_PRIVATE, null);
         objSqLiteDatabase.delete("userTABLE", null, null);
 
     } // deleteAllData
@@ -70,118 +72,73 @@ public class MainActivity extends AppCompatActivity {
 
     private void synJSONtoSQLite() {
 
-// Step ในการทำการ Synchronize ข้อมูลจาก JSON To SQLite
-        // ข้อที่ 0.  Change Policy
+//Setup Policy
         StrictMode.ThreadPolicy myPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(myPolicy);
 
+        //1. Create InputStream
+        InputStream objInputStream = null;
+        String strJSON = null;
+        HttpPost objHttpPost = null;
 
-        // Sync ข้อมูลจาก Table โดยค่อยๆทำทีละ Table
-        int intTimes = 0;    // จำนวนครั้ง
-        while (intTimes <= 1) {
+        try {
 
+            HttpClient objHttpClient = new DefaultHttpClient();
+            objHttpPost = new HttpPost("http://swiftcodingthai.com/tae/get_data_user_tae.php");
+            HttpResponse objHttpResponse = objHttpClient.execute(objHttpPost);
+            HttpEntity objHttpEntity = objHttpResponse.getEntity();
+            objInputStream = objHttpEntity.getContent();
 
-            // Constant
-            InputStream objInputStream = null;  // โหลดไปใช้ไป
-            String strJSON = null;  // จะเปลี่ยน Input Stream ให้เป็น String
-            String strUrlUser = "http://swiftcodingthai.com/tae/get_data_user_tae.php";   // URL ของไฟล์ JSON ตาราง User
-            HttpPost objHttpPost = null;   // ประกาศตัวแปรไว้
+        } catch (Exception e) {
+            Log.d(TAG, "InputStream ==> " + e.toString());
+        }
 
-            // ข้อที่ 1. Create InputStream   ทำให้มันโหลดแบบ Streaming ให้ได้ก่อน
-            try {   // สิ่งที่เสี่ยงต่อการ Error ใส่ในนี้
+        //2. Create JSON String
+        try {
 
-                HttpClient objHttpClient = new DefaultHttpClient();
-                switch (intTimes) {
-                    case 0:
-                        objHttpPost = new HttpPost(strUrlUser);
-                        break;
-                }
+            BufferedReader objBufferedReader = new BufferedReader(new InputStreamReader(objInputStream, "UTF-8"));
+            StringBuilder objStringBuilder = new StringBuilder();
+            String strLine = null;
 
-                HttpResponse objHttpResponse = objHttpClient.execute(objHttpPost);
-                HttpEntity objHttpEntity = objHttpResponse.getEntity();
-                objInputStream = objHttpEntity.getContent();
+            while ((strLine = objBufferedReader.readLine()) != null) {
+                objStringBuilder.append(strLine);
+            }   // while
 
+            objInputStream.close();
+            strJSON = objStringBuilder.toString();
 
-            } catch (Exception e) { // ถ้า Error จะเข้ามาในนี้
-
-                Log.d(TAG, "InputStream ==>" + e.toString());
-
-            }
-
-
-            // ข้อที่ 2. Create strJSON     เปลี่ยนสิ่งที่เรา Streaming มาให้เป็น String
-            try {
-
-                BufferedReader objBufferedReader = new BufferedReader(new InputStreamReader(objInputStream, "UTF-8"));
-                StringBuilder objStringBuilder = new StringBuilder();   // ตัวที่ทำหน้าที่รวม
-                String strLine = null;  // ตัวแปรที่รับตัวที่ถูกตัดมา
-
-                while ((strLine = objBufferedReader.readLine())!= null ) {  // ถ้า strLine ว่างเปล่า ก็ออกจาก Loop
-
-                    objStringBuilder.append(strLine);   // มีหน้าที่คอยผูก String ไปเรื่อย ๆ
+        } catch (Exception e) {
+            Log.d(TAG, "JSON String ==> " + e.toString());
+        }
 
 
-                }   // While Loop
-                objInputStream.close();                 // ถ้าหมด ก็ไม่ต้องโหลดต่อ
-                strJSON = objStringBuilder.toString();
+        //3. Update to SQLite
+        try {
 
+            final JSONArray objJsonArray = new JSONArray(strJSON);
 
-            } catch (Exception e) {
+            for (int i = 0; i < objJsonArray.length(); i++) {
 
-                Log.d(TAG, "strJSON ==> "+e.toString());
+                JSONObject object = objJsonArray.getJSONObject(i);
+                String strUser = object.getString("User");
+                String strPassword = object.getString("Password");
+                String strName = object.getString("Name");
+                String strAge = object.getString("Age");
+                String strSex = object.getString("Sex");
+                String strWeight = object.getString("Weight");
+                String strHeight = object.getString("Height");
+                String strEmail = object.getString("Email");
+                objUserTABLE.addNewUser(strUser, strPassword, strName,
+                        strAge, strSex, strWeight, strHeight, strEmail);
 
-            }
+            }   // for
 
+        } catch (Exception e) {
+            Log.d(TAG, "Update SQLite ==> " + e.toString());
+        }
 
+    }   // synJSONtoSQLite
 
-            // ข้้อที่ 3. Update SQLite     เอา strJSON ที่ได้มา มาใส่ใน SQLite
-            try {
-
-                final JSONArray objJsonArray = new JSONArray(strJSON);
-
-                for (int i = 0; i < objJsonArray.length(); i++) {
-
-                    JSONObject object = objJsonArray.getJSONObject(i);  // เอา i มาแทนค่าตำแหน่งของ Array
-
-                    switch (intTimes) {
-
-                        // สำหรับ UserTABLE
-                        // ได้ String 8 ตัวสำหรับใส่ใน DB แล้ว
-                        case 0:
-                        String strUser = object.getString("User");  // User เป็น Key ใน JSON
-                        String strPassword = object.getString("Password");
-                        String strName = object.getString("Name");
-                        String strAge = object.getString("Age");
-                        String strSex = object.getString("Sex");
-                        String strWeight = object.getString("Weight");
-                        String strHeight = object.getString("Height");
-                        String strEmail = object.getString("Email");
-
-                        objUserTABLE.addNewUser(strUser, strPassword, strName, strAge, strSex, strWeight, strHeight,strEmail);
-                            break;
-
-
-
-
-                    }
-
-                }   // วิ่งวนตามจำนวน แถวใน JSON
-
-            } catch (Exception e) {
-
-                Log.d(TAG, "Update SQLite ==> "+e.toString());
-
-            }
-
-            intTimes += 1;  // บวกทีละ 1
-
-        }   // while
-
-
-
-
-
-    } //synJSONtoSQLite
 
     public void clickSignIn(View view) {
         String strUser = userEditText.getText().toString().trim();
