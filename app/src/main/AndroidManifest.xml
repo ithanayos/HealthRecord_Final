@@ -40,7 +40,7 @@
         <activity android:name=".CheckpressActivity" />
         <activity android:name=".CheckheartActivity" />
         <activity android:name=".CheckglucoseActivity" />
-        <activity android:name=".CheckbmiActivity"></activity>
+        <activity android:name=".CheckbmiActivity" />
     </application>
 
 </manifest>
