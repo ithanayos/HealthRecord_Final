@@ -31,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
     private Spinner ageSpinner;
 
     private String userString, passwordString, nameString,
-            emailString, weightString, heightString, sexString = "Mail", ageString;
+            emailString, weightString, heightString, sexString = "Male", ageString;
 
     private UserTABLE objUserTABLE;
     private MyDialog objMyDialog;

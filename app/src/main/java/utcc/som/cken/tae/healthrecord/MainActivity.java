@@ -1,7 +1,5 @@
 package utcc.som.cken.tae.healthrecord;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -27,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Explicit
     private UserTABLE objUserTABLE;
+    private RecordTABLE objRecordTABLE;
+
     private String TAG ="Health", userString, passwordString;
 
     private MyDialog objMyDialog = new MyDialog();
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
 
     } //checkUserPassword
 
-    private void wecomeDialog(final String strName) {
+    /*private void wecomeDialog(final String strName) {
         AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
         objBuilder.setIcon(R.drawable.icon_question);
         objBuilder.setTitle("Welcome");
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         objBuilder.show();
-    } //welcomeDialog
+    } //welcomeDialog*/
 
 
     public void clickSignUp(View view) {
@@ -231,11 +231,15 @@ public class MainActivity extends AppCompatActivity {
     private void testAddValue() {
 
         objUserTABLE.addNewUser("User", "Password", "Name", "Age", "Sex", "Weight", "Height", "Email");
+        objRecordTABLE.addNewRecord("Sleep", "Breakfast", "Lunch", "Dinner", "TypeExercise", "TimeExercise", "DrinkWater", "Weight");
 
     }
 
     private void createDatabase() {
         objUserTABLE = new UserTABLE(this); // this การเรียกใช้ Constructor
+        objRecordTABLE = new RecordTABLE(this);
+
+
     }
 
 } //Main Class
