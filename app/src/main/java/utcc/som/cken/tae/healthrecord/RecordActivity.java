@@ -17,10 +17,10 @@ public class RecordActivity extends AppCompatActivity {
 
     //Explicit
     private TextView showTimeTextView;
-    private String currentTimeString, sleepString,
-    breakfastString = null, lunchString = null, dinnerString = null, timeExerciseString = null, typeExerciseString = null, drinkWaterString = null;
+    private String currentTimeString, sleepString = null,
+    breakfastString = null, lunchString = null, dinnerString = null, timeExerciseString = null, typeExerciseString = null, drinkWaterString = null, weightString = null;
     private Spinner sleepSpinner, exerciseSpinner, drinkWaterSpinner;
-    private EditText breakfastEditText, lunchEditText, dinnerEditText, timeExerciseEditText ,typeExerciseEditText;
+    private EditText breakfastEditText, lunchEditText, dinnerEditText, timeExerciseEditText ,typeExerciseEditText ,weightEditText;
 
 
     @Override
@@ -95,6 +95,7 @@ public class RecordActivity extends AppCompatActivity {
         lunchString = lunchEditText.getText().toString().trim();
         dinnerString = dinnerEditText.getText().toString().trim();
         timeExerciseString = timeExerciseEditText.getText().toString().trim();
+        weightString = weightEditText.getText().toString().trim();
 
 
     }
@@ -139,6 +140,7 @@ public class RecordActivity extends AppCompatActivity {
         exerciseSpinner = (Spinner) findViewById(R.id.spinner3);
         timeExerciseEditText = (EditText) findViewById(R.id.editText4);
         drinkWaterSpinner = (Spinner) findViewById(R.id.spinner4);
+        weightEditText = (EditText) findViewById(R.id.editText5);
 
     }
 
