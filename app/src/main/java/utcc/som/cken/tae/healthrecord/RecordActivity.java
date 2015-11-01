@@ -18,8 +18,8 @@ public class RecordActivity extends AppCompatActivity {
     //Explicit
     private TextView showTimeTextView;
     private String currentTimeString, sleepString,
-    breakfastString = null, lunchString = null, dinnerString = null, timeExerciseString = null, typeExerciseString = null;
-    private Spinner sleepSpinner,exerciseSpinner;
+    breakfastString = null, lunchString = null, dinnerString = null, timeExerciseString = null, typeExerciseString = null, drinkWaterString = null;
+    private Spinner sleepSpinner, exerciseSpinner, drinkWaterSpinner;
     private EditText breakfastEditText, lunchEditText, dinnerEditText, timeExerciseEditText ,typeExerciseEditText;
 
 
@@ -40,8 +40,30 @@ public class RecordActivity extends AppCompatActivity {
         //Create execise Spinner
         createExerciseSpinner();
 
+        createDrinkWaterSpinner();
+
 
     } //onCreate
+
+    private void createDrinkWaterSpinner() {
+
+        final String[] strDrinkWater = {"0 - 3 แก้ว", "3 - 6 แก้ว", "6 - 9 แก้ว", "9 - 12 แก้ว", "12 - 15 แก้ว"};
+
+        ArrayAdapter<String> drinkwaterAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strDrinkWater);
+        drinkWaterSpinner.setAdapter(drinkwaterAdapter);
+
+        drinkWaterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                drinkWaterString = strDrinkWater[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                drinkWaterString = strDrinkWater[0];
+            }
+        });
+    }
 
     private void createExerciseSpinner() {
         final String[] strExercise = new String[3];
@@ -98,6 +120,7 @@ public class RecordActivity extends AppCompatActivity {
 
     }
 
+
     private void showTime() {
 
         DateFormat objDateFormat = new SimpleDateFormat("yyyy/MM/dd HH/mm/ss");
@@ -115,6 +138,7 @@ public class RecordActivity extends AppCompatActivity {
         dinnerEditText = (EditText) findViewById(R.id.editText3);
         exerciseSpinner = (Spinner) findViewById(R.id.spinner3);
         timeExerciseEditText = (EditText) findViewById(R.id.editText4);
+        drinkWaterSpinner = (Spinner) findViewById(R.id.spinner4);
 
     }
 

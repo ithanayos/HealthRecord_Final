@@ -25,22 +25,7 @@
         <activity
             android:name=".RecordActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".TestActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity
-            android:name=".DiseaseActivity"
-            android:label="@string/title_disease"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".HeartActivity" />
-        <activity android:name=".diabetesActivity" />
-        <activity android:name=".LowpressureActivity" />
-        <activity android:name=".highpressureActivity" />
-        <activity android:name=".CheckhealthActivity" />
-        <activity android:name=".AboutmeActivity" />
-        <activity android:name=".CheckpressActivity" />
-        <activity android:name=".CheckheartActivity" />
-        <activity android:name=".CheckglucoseActivity" />
-        <activity android:name=".CheckbmiActivity" />
+
         <activity android:name=".MyServiceActivity"></activity>
     </application>
 
