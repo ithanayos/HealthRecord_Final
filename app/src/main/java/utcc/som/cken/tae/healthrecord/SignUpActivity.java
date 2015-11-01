@@ -175,7 +175,7 @@ public class SignUpActivity extends AppCompatActivity {
         objBuilder.setMessage("User = " + userString
                 + "\n" + "Password = " + passwordString
                 + "\n" + "Name = " + nameString
-                + "\n" + "eMail = " + emailString
+                + "\n" + "Email = " + emailString
                 + "\n" + "Sex = " + sexString
                 + "\n" + "Age = " + ageString
                 + "\n" + "Weight = " + weightString

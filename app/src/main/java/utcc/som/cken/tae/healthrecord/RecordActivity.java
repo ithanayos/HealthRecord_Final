@@ -1,5 +1,8 @@
 package utcc.som.cken.tae.healthrecord;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,9 +11,18 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class RecordActivity extends AppCompatActivity {
@@ -97,6 +109,8 @@ public class RecordActivity extends AppCompatActivity {
         timeExerciseString = timeExerciseEditText.getText().toString().trim();
         weightString = weightEditText.getText().toString().trim();
 
+        confirmValue();
+
 
     }
 
@@ -143,5 +157,77 @@ public class RecordActivity extends AppCompatActivity {
         weightEditText = (EditText) findViewById(R.id.editText5);
 
     }
+
+    private void confirmValue() {
+        AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
+        objBuilder.setIcon(R.drawable.icon_question);
+        objBuilder.setTitle("Confirm Value");
+        objBuilder.setMessage("Sleep = " + sleepString
+                + "\n" + "Breakfast = " + breakfastString
+                + "\n" + "Lunch = " + lunchString
+                + "\n" + "Dinner = " + dinnerString
+                + "\n" + "TypeExercise = " + typeExerciseString
+                + "\n" + "TimeExercise = " + timeExerciseString
+                + "\n" + "DrinkWater = " + drinkWaterString
+                + "\n" + "Weight = " + weightString);
+        objBuilder.setCancelable(false); // Undo ไม่ได้
+        objBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+
+            }
+        });
+        objBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Update to MySQL
+                updateToMySQL();
+                dialogInterface.dismiss();
+            }
+        });
+        objBuilder.show();
+
+    }
+
+    private void updateToMySQL() {
+
+        //Setup policy
+        StrictMode.ThreadPolicy myPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(myPolicy);
+
+
+        //Update Value
+        try {
+
+            ArrayList<NameValuePair> objNameValuePairs = new ArrayList<NameValuePair>();
+            objNameValuePairs.add(new BasicNameValuePair("isAdd", "true"));
+            objNameValuePairs.add(new BasicNameValuePair("Sleep", sleepString));
+            objNameValuePairs.add(new BasicNameValuePair("Breakfast", breakfastString));
+            objNameValuePairs.add(new BasicNameValuePair("Lunch", lunchString));
+            objNameValuePairs.add(new BasicNameValuePair("Dinner", dinnerString));
+            objNameValuePairs.add(new BasicNameValuePair("TypeExercise", typeExerciseString));
+            objNameValuePairs.add(new BasicNameValuePair("TimeExercise", timeExerciseString));
+            objNameValuePairs.add(new BasicNameValuePair("DrinkWater", drinkWaterString));
+            objNameValuePairs.add(new BasicNameValuePair("Weight", weightString));
+
+            HttpClient objHttpClient = new DefaultHttpClient();
+            HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/tae/add_data_record_tae.php");
+            objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
+            objHttpClient.execute(objHttpPost);
+
+            Toast.makeText(RecordActivity.this, "Update New Value Successful", Toast.LENGTH_LONG);
+
+            finish();
+
+        } catch (Exception e) {
+            Toast.makeText(RecordActivity.this, "Cannot Update To MySQL", Toast.LENGTH_LONG).show();
+
+        }
+
+
+
+    } // UpdateToMySQL
+
 
 } // Main Class
