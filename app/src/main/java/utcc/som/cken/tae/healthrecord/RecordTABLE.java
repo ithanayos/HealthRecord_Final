@@ -23,6 +23,7 @@ public class RecordTABLE {
     public static final String COLUMN_TIMEEXERCISE = "TimeExercise";
     public static final String COLUMN_DRINKWATER = "DrinkWater";
     public static final String COLUMN_WEIGHT = "Weight";
+    public static final String COLUMN_NAME_USER = "NameUser";
 
     public RecordTABLE(Context context) {
 
@@ -32,7 +33,7 @@ public class RecordTABLE {
 
     } // Constructor
 
-    public long addNewRecord(String strSleep, String strBreakfast, String strLunch, String strDinner, String strTypeExercise, String strTimeExercise, String strDrinkWater, String strWeight) {
+    public long addNewRecord(String strSleep, String strBreakfast, String strLunch, String strDinner, String strTypeExercise, String strTimeExercise, String strDrinkWater, String strWeight, String strNameUser) {
 
         ContentValues objContentValues = new ContentValues();
         objContentValues.put(COLUMN_SLEEP, strSleep);
@@ -43,6 +44,7 @@ public class RecordTABLE {
         objContentValues.put(COLUMN_TIMEEXERCISE, strTimeExercise);
         objContentValues.put(COLUMN_DRINKWATER, strDrinkWater);
         objContentValues.put(COLUMN_WEIGHT, strWeight);
+        objContentValues.put(COLUMN_NAME_USER, strNameUser);
         return writeSqLiteDatabase.insert(RECORD_TABLE, null, objContentValues);
 
     } // addNewRecord

@@ -10,6 +10,7 @@ public class MyServiceActivity extends AppCompatActivity {
 
     //Explicit
     private String strUser;
+    private String strNameUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +25,14 @@ public class MyServiceActivity extends AppCompatActivity {
     public void clickDalySave(View view) {
 
         Intent objIntent = new Intent(MyServiceActivity.this, RecordActivity.class);
+        objIntent.putExtra("NameUser", strNameUser);
         objIntent.putExtra("Name", strUser);
         startActivity(objIntent);
 
     }
 
     private void showUser() {
+        strNameUser = getIntent().getStringExtra("NameUser");
         strUser = getIntent().getStringExtra("Name");
         TextView userTextView = (TextView) findViewById(R.id.textView11);
         userTextView.setText(strUser);

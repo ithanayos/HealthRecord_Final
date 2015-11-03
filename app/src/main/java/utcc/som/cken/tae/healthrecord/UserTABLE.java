@@ -33,6 +33,8 @@ public class UserTABLE {
 
     } // Constructor
 
+
+
     //SearchUser
     public String[] searchUser(String strUser) {
 

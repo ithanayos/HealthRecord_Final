@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase
                 ("Health.db", MODE_PRIVATE, null);
         objSqLiteDatabase.delete("userTABLE", null, null);
+        objSqLiteDatabase.delete("recordTABLE", null, null);
 
     } // deleteAllData
 
@@ -181,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
                             objUserTABLE.addNewUser(strUser, strPassword, strName, strAge, strSex, strWeight, strHeight,strEmail);
                             break;
                         default:
+
                             String strSleep = object.getString("Sleep");
                             String strBreakfast = object.getString("Breakfast");
                             String strLunch = object.getString("Lunch");
@@ -189,8 +191,9 @@ public class MainActivity extends AppCompatActivity {
                             String strTimeExercise = object.getString("TimeExercise");
                             String strDrinkWater = object.getString("DrinkWater");
                             String strWeightRecord = object.getString("Weight");
+                            String strNameUser = object.getString("NameUser");
 
-                            objRecordTABLE.addNewRecord(strSleep, strBreakfast, strLunch, strDinner, strTypeExercise, strTimeExercise, strDrinkWater, strWeightRecord);
+                            objRecordTABLE.addNewRecord(strSleep, strBreakfast, strLunch, strDinner, strTypeExercise, strTimeExercise, strDrinkWater, strWeightRecord, strNameUser);
                             break;
 
                     }
@@ -239,6 +242,7 @@ public class MainActivity extends AppCompatActivity {
             if (strPassword.equals(strMyResult[2])) {
                 //Password True
                 Intent objIntent = new Intent(MainActivity.this, MyServiceActivity.class);
+                objIntent.putExtra("NameUser", strMyResult[1]);
                 objIntent.putExtra("Name", strMyResult[3]);
                 startActivity(objIntent);
                 finish();
@@ -287,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
     private void testAddValue() {
 
         objUserTABLE.addNewUser("User", "Password", "Name", "Age", "Sex", "Weight", "Height", "Email");
-        objRecordTABLE.addNewRecord("Sleep", "Breakfast", "Lunch", "Dinner", "TypeExercise", "TimeExercise", "DrinkWater", "Weight");
+        objRecordTABLE.addNewRecord("Sleep", "Breakfast", "Lunch", "Dinner", "TypeExercise", "TimeExercise", "DrinkWater", "Weight", "NameUser");
 
     }
 

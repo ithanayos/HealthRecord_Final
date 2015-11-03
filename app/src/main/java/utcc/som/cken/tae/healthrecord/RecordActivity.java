@@ -29,11 +29,11 @@ public class RecordActivity extends AppCompatActivity {
 
     //Explicit
     private TextView showTimeTextView;
-    private String currentTimeString, sleepString = null,
+    private String idUserString,currentTimeString, sleepString = null,
     breakfastString = null, lunchString = null, dinnerString = null, timeExerciseString = null, typeExerciseString = null, drinkWaterString = null, weightString = null;
     private Spinner sleepSpinner, exerciseSpinner, drinkWaterSpinner;
     private EditText breakfastEditText, lunchEditText, dinnerEditText, timeExerciseEditText ,typeExerciseEditText ,weightEditText;
-
+    private String strNameUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +54,21 @@ public class RecordActivity extends AppCompatActivity {
 
         createDrinkWaterSpinner();
 
+        showUser();
+
+
+
+
 
     } //onCreate
+
+    private void showUser() {
+        strNameUser = getIntent().getStringExtra("NameUser");
+        TextView userTextView = (TextView) findViewById(R.id.textView18);
+        userTextView.setText(strNameUser);
+
+    }
+
 
     private void createDrinkWaterSpinner() {
 
@@ -109,6 +122,7 @@ public class RecordActivity extends AppCompatActivity {
         timeExerciseString = timeExerciseEditText.getText().toString().trim();
         weightString = weightEditText.getText().toString().trim();
 
+
         confirmValue();
 
 
@@ -158,6 +172,7 @@ public class RecordActivity extends AppCompatActivity {
 
     }
 
+
     private void confirmValue() {
         AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
         objBuilder.setIcon(R.drawable.icon_question);
@@ -202,6 +217,7 @@ public class RecordActivity extends AppCompatActivity {
 
             ArrayList<NameValuePair> objNameValuePairs = new ArrayList<NameValuePair>();
             objNameValuePairs.add(new BasicNameValuePair("isAdd", "true"));
+            //objNameValuePairs.add(new BasicNameValuePair("idUser", strIDUser));
             objNameValuePairs.add(new BasicNameValuePair("Sleep", sleepString));
             objNameValuePairs.add(new BasicNameValuePair("Breakfast", breakfastString));
             objNameValuePairs.add(new BasicNameValuePair("Lunch", lunchString));
@@ -210,6 +226,7 @@ public class RecordActivity extends AppCompatActivity {
             objNameValuePairs.add(new BasicNameValuePair("TimeExercise", timeExerciseString));
             objNameValuePairs.add(new BasicNameValuePair("DrinkWater", drinkWaterString));
             objNameValuePairs.add(new BasicNameValuePair("Weight", weightString));
+            objNameValuePairs.add(new BasicNameValuePair("NameUser", strNameUser));
 
             HttpClient objHttpClient = new DefaultHttpClient();
             HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/tae/add_data_record_tae.php");
