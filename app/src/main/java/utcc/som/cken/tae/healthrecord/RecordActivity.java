@@ -72,7 +72,7 @@ public class RecordActivity extends AppCompatActivity {
 
     private void createDrinkWaterSpinner() {
 
-        final String[] strDrinkWater = {"0 - 3 แก้ว", "3 - 6 แก้ว", "6 - 9 แก้ว", "9 - 12 แก้ว", "12 - 15 แก้ว"};
+        final String[] strDrinkWater = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 
         ArrayAdapter<String> drinkwaterAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strDrinkWater);
         drinkWaterSpinner.setAdapter(drinkwaterAdapter);
@@ -130,7 +130,7 @@ public class RecordActivity extends AppCompatActivity {
 
     private void createSleepSpinner() {
 
-        final String[] strSleep = {"0 - 3 ชั่วโมง", "3 - 6 ชั่วโมง", "6 - 9 ชั่วโมง", "9 - 12 ชั่วโมง", "12 - 15 ชั่วโมง"};
+        final String[] strSleep = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 
         ArrayAdapter<String> sleepAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strSleep);
         sleepSpinner.setAdapter(sleepAdapter);
@@ -229,7 +229,7 @@ public class RecordActivity extends AppCompatActivity {
             objNameValuePairs.add(new BasicNameValuePair("NameUser", strNameUser));
 
             HttpClient objHttpClient = new DefaultHttpClient();
-            HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/tae/add_data_record_tae.php");
+            HttpPost objHttpPost = new HttpPost("http://www.health-record.tk/add_data_record_tae.php");
             objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
             objHttpClient.execute(objHttpPost);
 

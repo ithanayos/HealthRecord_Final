@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
             // Constant
             InputStream objInputStream = null;  // โหลดไปใช้ไป
             String strJSON = null;  // จะเปลี่ยน Input Stream ให้เป็น String
-            String strUrlUser = "http://swiftcodingthai.com/tae/get_data_user_tae.php";   // URL ของไฟล์ JSON ตาราง User
-            String strUrlRecord = "http://swiftcodingthai.com/tae/get_data_record_tae.php";
+            String strUrlUser = "http://www.health-record.tk/get_data_user_tae.php";   // URL ของไฟล์ JSON ตาราง User
+            String strUrlRecord = "http://health-record.tk/get_data_record_tae.php";
             HttpPost objHttpPost = null;   // ประกาศตัวแปรไว้
 
             // ข้อที่ 1. Create InputStream   ทำให้มันโหลดแบบ Streaming ให้ได้ก่อน
