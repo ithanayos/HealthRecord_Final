@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="@string/title_record"
             android:id="@+id/textView5"
-            android:textSize="@dimen/h1"
+            android:textSize="@dimen/h2"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin" />
 
@@ -55,14 +55,15 @@
                         android:layout_height="wrap_content"
                         android:text="@string/sleep"
                         android:id="@+id/textView6"
-                        android:textSize="@dimen/h2"
-                        android:layout_weight="1" />
+                        android:textSize="@dimen/h3"
+                        android:layout_weight="2"
+                        android:textIsSelectable="false" />
 
                     <Spinner
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/spinner"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -89,9 +90,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/morning"
                             android:id="@+id/textView10"
-                            android:textSize="@dimen/h2"
-                            android:layout_weight="1"
-                            android:layout_gravity="top|bottom" />
+                            android:textSize="@dimen/h3"
+                            android:layout_weight="1" />
 
                         <EditText
                             android:layout_width="0dp"
@@ -113,9 +113,9 @@
                             android:layout_height="wrap_content"
                             android:text="@string/lunch"
                             android:id="@+id/textView14"
-                            android:textSize="@dimen/h2"
+                            android:textSize="@dimen/h3"
                             android:layout_weight="1"
-                            android:layout_gravity="top|bottom" />
+                            android:layout_gravity="bottom" />
 
                         <EditText
                             android:layout_width="0dp"
@@ -137,9 +137,8 @@
                             android:layout_height="wrap_content"
                             android:text="@string/dinner"
                             android:id="@+id/textView15"
-                            android:textSize="@dimen/h2"
-                            android:layout_weight="1"
-                            android:layout_gravity="top|bottom" />
+                            android:textSize="@dimen/h3"
+                            android:layout_weight="1" />
 
                         <EditText
                             android:layout_width="0dp"
@@ -164,12 +163,13 @@
                         android:layout_height="wrap_content"
                         android:text="@string/exercise"
                         android:id="@+id/textView8"
-                        android:textSize="@dimen/h2"
+                        android:textSize="@dimen/h3"
                         android:layout_weight="1" />
 
                     <Spinner
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/h3"
                         android:id="@+id/spinner3"
                         android:layout_weight="2" />
                 </LinearLayout>
@@ -184,7 +184,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/time"
                         android:id="@+id/textView16"
-                        android:textSize="@dimen/h2"
+                        android:textSize="@dimen/h3"
                         android:layout_weight="1" />
 
                     <EditText
@@ -192,7 +192,8 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/editText4"
                         android:layout_weight="1"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:hint="@string/hour" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -206,14 +207,14 @@
                         android:layout_height="wrap_content"
                         android:text="@string/drink"
                         android:id="@+id/textView9"
-                        android:textSize="@dimen/h2"
-                        android:layout_weight="1" />
+                        android:textSize="@dimen/h3"
+                        android:layout_weight="2" />
 
                     <Spinner
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/spinner4"
-                        android:layout_weight="2" />
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -226,9 +227,9 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/weight"
+                        android:text="@string/weightrecord"
                         android:id="@+id/textView17"
-                        android:textSize="@dimen/h2"
+                        android:textSize="@dimen/h3"
                         android:layout_weight="1" />
 
                     <EditText
@@ -236,7 +237,8 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/editText5"
                         android:layout_weight="1"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:hint="@string/kilo" />
                 </LinearLayout>
 
             </LinearLayout>

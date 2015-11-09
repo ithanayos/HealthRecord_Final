@@ -155,7 +155,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             String[] strResult = objUserTABLE.searchUser(userString);
             //ค้นหาเจอ
-            objMyDialog.errorDialog(SignUpActivity.this, "เปลี่ยน User", "ฐานข้อมูลมี User" + strResult[1] + "นี้อยู่แล้ว");
+            objMyDialog.errorDialog(SignUpActivity.this, "เปลี่ยน User", "ฐานข้อมูลมี User " + strResult[1] + " นี้อยู่แล้ว");
 
         } catch (Exception e) {
 

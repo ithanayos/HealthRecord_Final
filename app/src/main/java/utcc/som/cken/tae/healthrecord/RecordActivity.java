@@ -91,10 +91,13 @@ public class RecordActivity extends AppCompatActivity {
     }
 
     private void createExerciseSpinner() {
-        final String[] strExercise = new String[3];
-        strExercise[0] = "เบา";
-        strExercise[1] = "ปานกลาง";
-        strExercise[2] = "หนัก";
+        final String[] strExercise = new String[5];
+        strExercise[0] = "วิ่ง";
+        strExercise[1] = "ปั่นจักรยาน";
+        strExercise[2] = "ว่ายน้ำ";
+        strExercise[3] = "โยคะ";
+        strExercise[4] = "อื่นๆ";
+
 
         ArrayAdapter<String> exerciseAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strExercise);
         exerciseSpinner.setAdapter(exerciseAdapter);
