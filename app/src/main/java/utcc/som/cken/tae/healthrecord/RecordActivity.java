@@ -58,9 +58,9 @@ public class RecordActivity extends AppCompatActivity {
 
 
 
-
-
     } //onCreate
+
+
 
     private void showUser() {
         strNameUser = getIntent().getStringExtra("NameUser");
@@ -232,7 +232,7 @@ public class RecordActivity extends AppCompatActivity {
             objNameValuePairs.add(new BasicNameValuePair("NameUser", strNameUser));
 
             HttpClient objHttpClient = new DefaultHttpClient();
-            HttpPost objHttpPost = new HttpPost("http://www.health-record.tk/add_data_record_tae.php");
+            HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/tae/add_data_record_tae.php");
             objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
             objHttpClient.execute(objHttpPost);
 

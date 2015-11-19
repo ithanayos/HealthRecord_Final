@@ -9,7 +9,7 @@
     <string name="User_regis">User</string>
     <string name="Pass_regis">Password</string>
 
-    <string name="title_signup">สมัคสมาชิก</string>
+    <string name="title_signup">สมัครสมาชิก</string>
     <string name="name">ชื่อ นามสกุล</string>
     <string name="email">Email</string>
     <string name="sex">เพศ</string>

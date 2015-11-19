@@ -25,10 +25,10 @@
         <activity
             android:name=".RecordActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".MyServiceActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".TestActivity"></activity>
     </application>
 
 </manifest>

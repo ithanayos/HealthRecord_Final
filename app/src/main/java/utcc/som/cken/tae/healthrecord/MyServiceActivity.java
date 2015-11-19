@@ -1,8 +1,8 @@
 package utcc.som.cken.tae.healthrecord;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -21,6 +21,8 @@ public class MyServiceActivity extends AppCompatActivity {
         showUser();
 
     } // onCreate
+
+
 
     public void clickDalySave(View view) {
 

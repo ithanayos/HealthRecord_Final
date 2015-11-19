@@ -222,7 +222,7 @@ public class SignUpActivity extends AppCompatActivity {
             objNameValuePairs.add(new BasicNameValuePair("Email", emailString));
 
             HttpClient objHttpClient = new DefaultHttpClient();
-            HttpPost objHttpPost = new HttpPost("http://www.health-record.tk/add_data_user_tae.php");
+            HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/tae/add_data_user_tae.php");
             objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
             objHttpClient.execute(objHttpPost);
 
